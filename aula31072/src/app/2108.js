@@ -19,10 +19,10 @@ export default function App() {
        <View>
          <View style={styles.rodape}>
                
-                <Button title="VOLTAR" onPress={() => router.back()} />
+                <Button title="VOLTAR" onPress={() => router.back()}/> 
               </View>
       </View>
-  </View>
+  </View> 
    
   );
 };

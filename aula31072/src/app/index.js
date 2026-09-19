@@ -53,6 +53,36 @@ export default function Inicio() {
         </Link>
       </View>
 
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>1809</Text>
+       
+        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+        <Link href="/1809" style={styles.link}>
+         ver aula
+        </Link>
+      </View>
+
+      
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>notas</Text>
+       
+        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+        <Link href="/notas" style={styles.link}>
+         ver aula
+        </Link>
+      </View>
+
+       <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>contador</Text>
+       
+        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+        <Link href="/contador" style={styles.link}>
+         ver aula
+        </Link>
+      </View>
+
+
+
 
     </SafeAreaView>
   );
@@ -64,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 16,
     paddingTop: 16,
-      flexDirection: "row",
+      
   },
 
   cabecalho: {
