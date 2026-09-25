@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 
 export default function App() {
   return (
@@ -7,8 +7,12 @@ export default function App() {
 
     <View style={styles.tela}>
       <View style={styles.palco}>
+       
         <Text style={styles.textoTitulo}>WhatsApp</Text>
+       <Button title="VOLTAR" onPress={() => router.back()} />
+      
       </View>
+     
       <View style={styles.subcaixa}>
         <Text style={styles.textoSub}>CALLS</Text>
         <Text style={styles.textoSub}>CHATS</Text>
@@ -18,7 +22,12 @@ export default function App() {
       <View style={styles.corDeFundo}>
         <View style={styles.caixaMaior}></View>
 
-        <View style={styles.caixaMenor}></View>
+        <View style={styles.caixaMenor}>
+             <Image 
+  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+  style={styles.logo}
+/>
+        </View>
         <View>
           <View style={styles.corretorTexto}>
             <Text style={styles.textoCima}>Gabriel O Bom</Text>
@@ -35,7 +44,12 @@ export default function App() {
       <View>
         <View style={styles.corDeFundo}>
           <View style={styles.caixaMaior}></View>
-          <View style={styles.caixaMenor}></View>
+          <View style={styles.caixaMenor}>
+               <Image 
+  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+  style={styles.logo}
+/>
+          </View>
           <View>
             <View style={styles.corretorTexto}>
               <Text style={styles.textoCima}>Manu</Text>
@@ -51,7 +65,12 @@ export default function App() {
       <View>
         <View style={styles.corDeFundo}>
           <View style={styles.caixaMaior}></View>
-          <View style={styles.caixaMenor}></View>
+          <View style={styles.caixaMenor}>
+           <Image 
+  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+  style={styles.logo}
+/>
+          </View>
           <View>
             <View style={styles.corretorTexto}>
               <Text style={styles.textoCima}>Chaveiro</Text>
@@ -67,7 +86,12 @@ export default function App() {
       <View>
         <View style={styles.corDeFundo}>
           <View style={styles.caixaMaior}></View>
-          <View style={styles.caixaMenor}></View>
+          <View style={styles.caixaMenor}>
+               <Image 
+  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+  style={styles.logo}
+/>
+          </View>
           <View>
             <View style={styles.corretorTexto}>
               <Text style={styles.textoCima}>Alexandre O Grande</Text>
@@ -83,7 +107,12 @@ export default function App() {
       <View>
         <View style={styles.corDeFundo}>
           <View style={styles.caixaMaior}></View>
-          <View style={styles.caixaMenor}></View>
+          <View style={styles.caixaMenor}>
+               <Image 
+  source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
+  style={styles.logo}
+/>
+          </View>
           <View>
             <View style={styles.corretorTexto}>
               <Text style={styles.textoCima}>Bellzebu</Text>
@@ -165,7 +194,7 @@ const styles = StyleSheet.create({
 
   palco: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+   justifyContent: "space-between",
     alignItems: "center",
     paddingLeft: 15,
     backgroundColor: "#075e54",
@@ -217,5 +246,11 @@ const styles = StyleSheet.create({
 
 
   },
+
+logo: { 
+  width: "100%", 
+  height: "100%", 
+  borderRadius: 50 
+}
 
 });
