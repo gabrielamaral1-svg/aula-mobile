@@ -11,7 +11,7 @@ export default function App() {
   const adicionarItem = () => {
     if (texto.trim() !== '') {
       setLista([...lista, texto]);
-      setTexto(''); // Limpa o campo após adicionar
+      setTexto(''); 
     }
   };
 
@@ -27,7 +27,7 @@ export default function App() {
         />
       </View>
 
-      {/* Envolvido numa View apenas para controlar as margens e a largura */}
+      
       <View style={styles.buttonWrapper}>
         <Button 
           title="ADICIONAR" 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   buttonWrapper: {
-    marginHorizontal: 100, // Limita a largura do botão nativo
+    marginHorizontal: 100, 
     marginBottom: 50,
   },
   item: {
