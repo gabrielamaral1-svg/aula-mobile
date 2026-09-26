@@ -1,11 +1,13 @@
 import { Link, Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Este arquivo é a rota "/" — a tela que abre primeiro.
 // O nome index é o único com significado especial: index.js de uma pasta é a
 // tela daquela pasta.
 export default function Inicio() {
+  
+  
   return (
     // edges={["bottom"]}: o cabeçalho já resolveu o topo, sobra a barra de
     // gestos embaixo. Com "bottom" na lista, o topo fica de fora — a
@@ -14,7 +16,7 @@ export default function Inicio() {
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
       {/* Cada tela pode mexer no próprio cabeçalho */}
       <Stack.Screen options={{ title: "minhas adoradas atividades baby" }} />
-
+<ScrollView>
      
 
       <View style={styles.cartao}>
@@ -81,18 +83,31 @@ export default function Inicio() {
         </Link>
       </View>
 
-      <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>2509</Text>
+       <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>bancoDosDados</Text>
        
         {/* href é o caminho do arquivo: notas.js vira "/notas" */}
-        <Link href="/2509" style={styles.link}>
+        <Link href="/bancoDosDados" style={styles.link}>
+         ver aula
+        </Link>
+      </View>
+
+ <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Bordel</Text>
+       
+        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+        <Link href="/Bordel" style={styles.link}>
          ver aula
         </Link>
       </View>
 
 
+</ScrollView>
+     
+
     </SafeAreaView>
-  );
+  
+);
 }
 
 const styles = StyleSheet.create({
@@ -100,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 16,
-    paddingTop: 0,
+    paddingTop: 13,
       
   },
 
@@ -132,10 +147,10 @@ const styles = StyleSheet.create({
 
   cartao: {
     backgroundColor: "#F1F3F6",
-    borderRadius: 12,
-    padding: 10,
+    borderRadius: 18,
+    padding: 20,
     marginBottom: 12,
-    gap: 6,
+    gap: 16,
   },
 
   cartaoTitulo: {
