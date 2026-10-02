@@ -51,11 +51,10 @@ export default function ListaDb() {
   }, []);
 
   function salvar() {
-    adicionar(texto);
-    adicionar(cor);
-    setTexto("");
-    setCor("");
-    carregar();
+ adicionar(texto, cor);
+  setTexto("");
+  setCor("");
+  carregar();
   }
 
   function remover(id) {
