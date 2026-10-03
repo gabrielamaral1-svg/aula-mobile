@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
   corDeFundo: {
     flexDirection: "row",
     gap: 10,
-   
-
     alignItems: "center",
     height: 100,
   },

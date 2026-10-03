@@ -1,5 +1,5 @@
 import { Link, Stack } from "expo-router";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Este arquivo é a rota "/" — a tela que abre primeiro.
@@ -15,7 +15,38 @@ export default function Inicio() {
     // nosso, não área segura: tire e o avatar cola no cabeçalho.
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
       {/* Cada tela pode mexer no próprio cabeçalho */}
+
+
+      <View style={styles.corDeFundo}>
+       <View style={styles.caixaMaior}></View>
+        <View style={styles.caixaMenor}>
+  <Image 
+ source={require('../../assets/favicon.png')}
+  
+  style={styles.logo}
+  
+ />
+          
+        </View>
+       <View>
+        <Text style={styles.textoAzul}>Olá Estudante</Text>
+        <Text style={styles.textoAzul}>Bem Vindo</Text>
+       </View>
+         
+      
+       </View>
+        <View style={styles.caixaO}></View>
+       <View>
+        
+      </View>
+  
+   
+      
       <Stack.Screen options={{ title: "minhas adoradas atividades baby" }} />
+
+
+
+
 <ScrollView>
      
 
@@ -92,11 +123,20 @@ export default function Inicio() {
         </Link>
       </View>
 
- <View style={styles.cartao}>
+   <View style={styles.cartao}>
         <Text style={styles.cartaoTitulo}>Bordel</Text>
        
         {/* href é o caminho do arquivo: notas.js vira "/notas" */}
         <Link href="/Bordel" style={styles.link}>
+         ver aula
+        </Link>
+      </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Floricultura</Text>
+       
+        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
+        <Link href="/Floricultura" style={styles.link}>
          ver aula
         </Link>
       </View>
@@ -170,4 +210,51 @@ const styles = StyleSheet.create({
     color: "#2354D6",
     marginTop: 4,
   },
-});
+
+  textoAzul: {
+    color: "#080505",
+    fontSize: 20,
+  },
+
+  textoLaranja: {
+    color: "#FFA500",
+  },
+
+  corDeFundo: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    height: 100,
+  },
+
+  caixaMaior: {
+    gap: 30,
+  },
+
+caixaMenor: {
+    borderColor: "rgb(250, 248, 248)",
+    
+    width: 90,
+    height: 90,
+    backgroundColor: "#ffffff",
+    borderRadius: 50,
+  },
+
+   caixaO: {
+
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    gap: 0,
+  },
+
+  logo: { 
+  width: "90%", 
+  height: "90%", 
+   
+  alignItems: "center",  
+  
+}
+
+  });
+

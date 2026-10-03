@@ -13,34 +13,37 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import * as SQLite from "expo-sqlite";
 
-const db = SQLite.openDatabaseSync("bordeis.db");
+const db = SQLite.openDatabaseSync("floricultura.db");
 
 
 db.execSync(`
-    CREATE TABLE IF NOT EXISTS bordeis (
+    CREATE TABLE IF NOT EXISTS floricultura (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome VARCHAR(255) NOT NULL,
-      cor VARCHAR(255) NOT NULL
+      cor VARCHAR(255) NOT NULL,
+      ciename VARCHAR(255) NOT NULL
+
     )
   `);
 
 function listar() {
-  return db.getAllSync("SELECT * FROM bordeis ORDER BY id DESC");
+  return db.getAllSync("SELECT * FROM floricultura ORDER BY id DESC");
 }
 
-function salvar(nome, cor) {
-  db.runSync("INSERT INTO bordeis (nome, cor) VALUES (?, ?)", [nome, cor]);
+function salvar(nome, cor, ciename) {
+  db.runSync("INSERT INTO floricultura (nome, cor, ciename) VALUES (?, ?, ?)", [nome, cor, ciename]);
 }
 
 function excluir(codigo) {
-  db.runSync("DELETE FROM bordeis WHERE id = ?", [codigo]);
+  db.runSync("DELETE FROM floricultura WHERE id = ?", [codigo]);
 }
 
-function edita(nome, cor, id) {
-  db.runSync("UPDATE bordeis SET nome = ?, cor = ? WHERE id = ?", [
+function edita(nome, cor, id, ciename) {
+  db.runSync("UPDATE floricultura SET nome = ?, cor = ?, ciename = ? WHERE id = ?", [
     nome,
     cor,
     id,
+    ciename,
   ]);
 }
 
@@ -48,6 +51,8 @@ export default function Lista() {
   const [lista, setLista] = useState([]);
   const [nome, setNome] = useState("");
   const [cor, setCor] = useState("");
+  const [ciename, setCiename] = useState("");
+
   const [idEditando, setIdEditando] = useState(0);
 
   function carregar() {
@@ -56,12 +61,13 @@ export default function Lista() {
 
   function guardarOuEditar() {
     if (idEditando === 0) {
-      salvar(nome, cor);
+      salvar(nome, cor, ciename);
     } else {
-      edita(nome, cor, idEditando);
+      edita(nome, cor, ciename, idEditando);
     }
     setNome("");
     setCor("");
+    setCiename("");
     setIdEditando(0);
     carregar();
   }
@@ -71,10 +77,11 @@ export default function Lista() {
     carregar();
   }
 
-  function editar(bordel) {
-    setIdEditando(bordel.id);
-    setNome(bordel.nome);
-    setCor(bordel.cor);
+  function editar(flor) {
+    setIdEditando(flor.id);
+    setNome(flor.nome);
+    setCor(flor.cor);
+    setCiename(flor.ciename);
   }
 
   useEffect(() => {
@@ -83,20 +90,28 @@ export default function Lista() {
 
   return (
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
-      <Stack.Screen options={{ title: "Meus bordeis" }} />
+      <Stack.Screen options={{ title: "Minhas flores" }} />
       
       <TextInput
         style={styles.campo}
         value={nome}
         onChangeText={setNome}
-        placeholder="Nome do bordel"
+        placeholder="Nome da flor"
       />
       <TextInput
         style={styles.campo}
         value={cor}
         onChangeText={setCor}
-        placeholder="Cor do bordel"
+        placeholder="Cor da flor"
       />
+      
+      <TextInput
+        style={styles.campo}
+        value={ciename}
+        onChangeText={setCiename}
+        placeholder="Nome Cientifico"
+      />
+      
       <Button title="Salvar" onPress={guardarOuEditar} />
 
       <FlatList
@@ -105,7 +120,7 @@ export default function Lista() {
         renderItem={({ item }) => (
           <View>
             <Text style={styles.item}>
-              {item.id} - {item.nome} - {item.cor}
+              {item.id} - {item.nome} - {item.cor} - {item.ciename}
             </Text>
             <Button
               title="Editar"
@@ -129,17 +144,17 @@ export default function Lista() {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#e41788",
     paddingHorizontal: 16,
     paddingTop: 16,
   },
 
   campo: {
-    borderWidth: 1,
-    borderColor: "#D9DDE3",
+    borderWidth: 5,
+    borderColor: "#500633",
     padding: 12,
     fontSize: 16,
-    color: "#000000",
+    color: "#eb69e0",
     marginBottom: 19,
   },
 
@@ -149,10 +164,10 @@ const styles = StyleSheet.create({
   },
 
   item: {
-    backgroundColor: "#f5f6f8",
+    backgroundColor: "#f051bb",
     padding: 16,
     marginBottom: 10,
     fontSize: 15,
-    color: "#111827",
+    color: "#e2d8e1",
   },
 });

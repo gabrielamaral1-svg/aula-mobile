@@ -14,8 +14,9 @@ export default function Layout() {
           topo. O botão de voltar e a animação vêm de graça. */}
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: "#023604" },
-          headerTintColor: "#8c9727",
+          headerStyle: { backgroundColor: "#2354D6" },
+          headerTintColor: "#000000",
+
         }}
       />
     </SafeAreaProvider>
